@@ -8,15 +8,15 @@ public class PlayerMotor : MonoBehaviour
     private Vector3 playerVelocity;
     private bool isGrounded;
 
-    //public bool crouching = false;
-    //public bool lerpCrouch = false;
-    //public bool sprinting = false;
-   
+    public bool crouching = false;
+    public bool lerpCrouch = false;
+    public bool sprinting = false;
+
 
     public float speed = 5f;
     public float gravity = -9.8f;
     public float jumpHeight = 3f;
-   // public float crouchTimer = 1f;
+    public float crouchTimer = 100f;
 
 
     // Start is called before the first frame update
@@ -29,21 +29,23 @@ public class PlayerMotor : MonoBehaviour
     void Update()
     {
         isGrounded = controller.isGrounded;
-        //if (lerpCrouch)
-        //{
-        //    float p = crouchTimer / 1;
-        //    p *= p;
-        //    if (crouching)
-        //        controller.height = Mathf.Lerp(controller.height, 1, p);
-        //    else
-        //        controller.height = Mathf.Lerp(controller.height, 2, p);
+        if (lerpCrouch)
+        {
+            float p = crouchTimer / 1;
+            p *= p;
+            if (crouching)
+                controller.height = Mathf.Lerp(controller.height, 1, p);
+            else
+                controller.height = Mathf.Lerp(controller.height, 2, p);
 
-        //    if (p > 1)
-        //    {
-        //        lerpCrouch = false;
-        //        crouchTimer = 0f;
-        //    }
-        //}
+            if (p > 1)
+            {
+                lerpCrouch = false;
+                crouchTimer = 0f;
+            }
+        }
+
+        Debug.Log(crouching);
     }
     
     // recebe os inputs do InputManager.cs e aplica no controller do player
@@ -74,24 +76,25 @@ public class PlayerMotor : MonoBehaviour
     }
 
 
-    //public void Crouch()
-    //{
-    //    crouching = !crouching;
-    //    crouchTimer = 0;
-    //    lerpCrouch = true;
+    public void Crouch()
+    {
+        crouching = !crouching;
+        crouchTimer = 0;
+        lerpCrouch = true;
 
-    //}
+    }
 
-    //public void Sprint()
-    //{
-    //    sprinting = !sprinting;
+    public void Sprint()
+    {
+        sprinting = !sprinting;
 
-    //    if (sprinting)
-    //    {
-    //        speed = 8;
-    //    } else
-    //    {
-    //        speed = 5;
-    //    }
-    //}
+        if (sprinting)
+        {
+            speed = 10;
+        }
+        else
+        {
+            speed = 5;
+        }
+    }
 }
