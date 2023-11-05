@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
     private PlayerInput.OnFootActions onFoot;
 
     private PlayerMotor motor;
+    private PlayerLook look;
 
 
     // Start is called before the first frame update
@@ -19,7 +20,9 @@ public class InputManager : MonoBehaviour
     {
         playerInput = new PlayerInput();
         onFoot = playerInput.OnFoot;
+
         motor = GetComponent<PlayerMotor>();
+        look = GetComponent<PlayerLook>();
         
         // função de pular
         onFoot.Jump.performed += ctx => motor.Jump();
@@ -30,6 +33,10 @@ public class InputManager : MonoBehaviour
     {
         //diz ao playermotor para se mover usando o valor da nossa ação de movimento
         motor.ProcessMove(onFoot.Movement.ReadValue<Vector2>());
+    }
+    private void LateUpdate()
+    {
+        look.ProcessLook(onFoot.Look.ReadValue<Vector2>());
     }
 
     private void OnEnable()
