@@ -671,9 +671,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea096fce63e18c419342cd181ab54a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crouching: 0
+  lerpCrouch: 0
+  sprinting: 0
   speed: 5
   gravity: -9.8
   jumpHeight: 1
+  crouchTimer: 100
 --- !u!114 &1078759564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -809,7 +813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3466903683459302643, guid: db97f0017226a1b448b8102f1835c05a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.98
+      value: 1.768
       objectReference: {fileID: 0}
     - target: {fileID: 3466903683459302643, guid: db97f0017226a1b448b8102f1835c05a, type: 3}
       propertyPath: m_LocalPosition.z
