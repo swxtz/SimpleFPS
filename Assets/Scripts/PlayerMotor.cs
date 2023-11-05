@@ -44,8 +44,6 @@ public class PlayerMotor : MonoBehaviour
                 crouchTimer = 0f;
             }
         }
-
-        Debug.Log(crouching);
     }
     
     // recebe os inputs do InputManager.cs e aplica no controller do player
@@ -64,7 +62,6 @@ public class PlayerMotor : MonoBehaviour
 
         controller.Move(playerVelocity * Time.deltaTime);
 
-        //Debug.Log(playerVelocity.y);
     }
 
     public void Jump()
@@ -81,6 +78,11 @@ public class PlayerMotor : MonoBehaviour
         crouching = !crouching;
         crouchTimer = 0;
         lerpCrouch = true;
+
+        //if (!sprinting && crouching && isGrounded)
+        //{
+            //transform.position = new Vector3(0, -1f, 0);
+        //}
 
     }
 
