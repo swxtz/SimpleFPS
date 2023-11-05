@@ -26,6 +26,9 @@ public class InputManager : MonoBehaviour
         
         // função de pular
         onFoot.Jump.performed += ctx => motor.Jump();
+
+        //onFoot.Crouch.performed += ctx => motor.Crouch();
+        //onFoot.Sprint.performed += ctx => motor.Sprint();
     }
 
     // Update is called once per frame
